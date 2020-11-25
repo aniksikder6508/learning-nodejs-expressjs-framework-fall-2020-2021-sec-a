@@ -33,7 +33,7 @@ module.exports = {
 			});		
 		});
 
-	},
+    },
 	execute: function (sql, callback){
 		getConnection(function(connection){
 			connection.query(sql , function (error, status) {
@@ -51,7 +51,3 @@ module.exports = {
 		});
 	}
 }
-
-
-
-
