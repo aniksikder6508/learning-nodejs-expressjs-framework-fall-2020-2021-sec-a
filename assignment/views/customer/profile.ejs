@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Customer registration form</h1>
+
+<form method="post">
+
+<legend>Personal Information</legend>
+<b>Username : </b><input type ="text" name="username" value="<%= username %>"><br/><br/>
+<b>Password : </b><input type ="text" name="password" value="<%= password %>"><br/><br/>
+<b>Email : </b><input type ="text" name="email" value="<%= email %>"><br/><br/>
+<b>Address : </b><input type ="text" name="address" value="<%= address %>"><br/><br/>
+
+<b>Gender :</b>
+        <select name="gender">
+            <% var options = ['Male','Female']; %>
+          <% for(var i = 0; i< options.length; i++) { %>
+                <% if(gender === options[i]){ %>
+                   <option value="<%= options[i] %>" selected="selected"><%= options[i] %></option>
+                <% } else{ %>
+                    <option value="<%= options[i] %>"><%= options[i] %></option>
+                <% } %>
+                 <% } %>
+        </select><br/><br/>       
+
+
+ 
+
+
+<input type="submit" value="EDIT">
+
+
+
+</form>
+</body>
+</html>

@@ -6,7 +6,7 @@ const exSession 		= require('express-session');
 const cookieParser 	= require('cookie-parser');
 const login          = require('./controllers/login');
 const admin          = require('./controllers/admin');
-const reg            =require('./controllers/registration');
+const reg            =require('./controllers/reg');
 const customer       =require('./controllers/customer');
 const app				= express();
 
