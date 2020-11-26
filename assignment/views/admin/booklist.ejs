@@ -1,0 +1,37 @@
+<div>
+
+    <h3 align='center'>BookList</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Bookname</th>
+        <th scope="col">Author</th>
+        <th scope="col">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+
+
+      <% 
+          users.forEach( function(std){ %>
+          <tr>
+              <td><%= std.id %></td>
+              <td><%= std.bookname %></td>
+              <td><%= std.author %></td>
+              <td><%= std.price %></td>
+              <td>
+                  <a href="/admin/editbook/<%= std.id %>">Edit</a>
+      </td>
+      <td>
+        <a href="/admin/deletbook/<%= std.id %>">Delete</a>
+              </td>
+
+              
+          </tr>
+
+      <%
+          }); 
+      %>
+    </tbody>
+  </table>

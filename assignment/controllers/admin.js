@@ -155,4 +155,108 @@ router.get('/userlist',(req,res)=>{
     });
 
 
+    router.get('/addbook',(req,res)=>{
+
+        if(req.session.sid != null){
+            
+        res.render('admin/addbook');
+       
+    }
+        else{
+            res.redirect('/login');
+        }
+    });
+
+
+    router.post('/addbook',(req,res)=>{
+
+        if(req.session.sid != null){
+            
+            var user={
+                bookname:req.body.bookname,
+                author:req.body.author,
+                price:req.body.price
+            }
+        
+            adminModel.addbook(user, function(results){
+                        
+                res.redirect('/admin');
+        });   
+       
+    }
+        else{
+            res.redirect('/login');
+        }
+    });
+
+
+    router.get('/booklist',(req,res)=>{
+
+        if(req.session.sid != null){
+            var id=req.session.sid;
+            adminModel.getAllBook(function(results){
+               res.render('admin/booklist',{users: results});    
+            });
+        }
+        else{
+            res.redirect('/login');
+        }
+    });
+
+
+
+
+    router.get('/editbook/:id',(req,res)=>{
+
+        var id=req.params.id;
+          console.log(id);
+          if(req.session.sid != null){
+      
+              adminModel.getByBookId(id,function(results){
+                  var customer={
+                      id:req.params.id,
+                      bookname:results.bookname,
+                      author:results.author,
+                      price:results.price
+                  };
+          
+                  res.render('admin/editbook',customer);
+              });
+               
+      }
+          else{
+              res.redirect('/login');
+          }
+      });
+
+
+      router.post('/editbook/:id',(req, res)=>{
+
+
+        var customer={
+         id:req.params.id,
+        bookname:req.body.bookname,
+        author:req.body.author,
+        price:req.body.price
+        }
+        //console.log("edit id:"+id);
+        if(req.session.sid != null){
+    
+          
+    
+           adminModel.updateBook(customer,function(results){
+               
+               res.redirect('/admin/booklist');
+           })
+        }
+    
+        else{
+            res.redirect('/login');
+        }
+        
+    });
+    
+      
+    
+
 module.exports =router;
