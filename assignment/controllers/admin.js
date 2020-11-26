@@ -256,6 +256,48 @@ router.get('/userlist',(req,res)=>{
         
     });
     
+
+    
+    router.get('/deletebook/:id',(req,res)=>{
+
+        var id=req.params.id;
+          console.log(id);
+          if(req.session.sid != null){
+      
+              adminModel.getByBookId(id,function(results){
+                  var customer={
+                      id:req.params.id,
+                      bookname:results.bookname,
+                      author:results.author,
+                      price:results.price
+                  };
+          
+                  res.render('admin/deletebook',customer);
+              });
+               
+      }
+          else{
+              res.redirect('/login');
+          }
+      });
+
+
+      router.post('/deletebook/:id',(req, res)=>{
+        var deletenotice={
+            id:req.params.id
+        }
+        if(req.session.sid != null){
+            adminModel.deleteBook(deletenotice,function(results){
+                
+                res.redirect('/admin/booklist');
+            })
+         }
+    
+    });
+
+
+
+
       
     
 

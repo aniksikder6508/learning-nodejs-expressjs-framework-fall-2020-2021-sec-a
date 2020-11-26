@@ -5,6 +5,7 @@ const bodyParser 		= require('body-parser');
 const exSession 		= require('express-session');
 const cookieParser 	= require('cookie-parser');
 const login          = require('./controllers/login');
+const logout				= require('./controllers/logout');
 const admin          = require('./controllers/admin');
 const reg            =require('./controllers/reg');
 const customer       =require('./controllers/customer');
@@ -25,7 +26,7 @@ app.use('/login',login);
 app.use('/admin',admin);
 app.use('/reg',reg);
 app.use('/customer',customer);
-
+app.use('/logout', logout);
 //router
 app.get('/', (req, res)=>{
    res.render('home/index');

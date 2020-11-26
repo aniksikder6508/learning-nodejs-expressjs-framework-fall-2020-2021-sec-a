@@ -97,5 +97,13 @@ module.exports= {
 
 	},
 
+	deleteBook: function(deletenotice, callback){
+		var sql="delete from booklist where id='"+deletenotice.id+"'";
+		db.execute(sql,function(results){
+			callback(true);
+		});
+
+	},
+
 
 }
