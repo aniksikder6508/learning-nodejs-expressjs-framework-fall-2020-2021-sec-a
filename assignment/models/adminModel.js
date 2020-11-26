@@ -50,4 +50,13 @@ module.exports= {
 		});
 	},
 
+	delete: function(deletenotice, callback){
+		var sql="delete from user where id='"+deletenotice.id+"'";
+		db.execute(sql,function(results){
+			callback(true);
+		});
+
+	},
+
+
 }

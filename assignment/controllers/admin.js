@@ -115,6 +115,44 @@ router.get('/userlist',(req,res)=>{
     });
 
 
+    router.get('/deleteuser/:id',(req, res)=>{
+
+        var id=req.params.id;
+        console.log(id);
+        if(req.session.sid != null){
+    
+            adminModel.getById(id,function(results){
+                var customer={
+                    id:req.params.id,
+                    username:results.username,
+                    password:results.password,
+                    email:results.email,
+                    address:results.address,
+                   gender:results.gender,
+                    type:results.type
+                };
+        
+                res.render('admin/deleteuser',customer);
+            });
+             
+    }
+        else{
+            res.redirect('/login');
+        }
+    });
+
+    router.post('/deleteuser/:id',(req, res)=>{
+        var deletenotice={
+            id:req.params.id
+        }
+        if(req.session.sid != null){
+            adminModel.delete(deletenotice,function(results){
+                
+                res.redirect('/admin/userlist');
+            })
+         }
+    
+    });
 
 
 module.exports =router;
