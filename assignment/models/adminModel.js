@@ -42,4 +42,12 @@ module.exports= {
 
 	},
 
+	
+	getAll: function(callback){
+		var sql ="select * from user where type='Customer'";
+		db.getResults(sql, function(results){
+			callback(results);
+		});
+	},
+
 }

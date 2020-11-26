@@ -89,7 +89,7 @@ router.post('/editprofile/:id',(req, res)=>{
 
        adminModel.update(customer,function(results){
            
-           res.redirect('/admin/profile');
+           res.redirect('/admin');
        })
     }
 
@@ -98,6 +98,21 @@ router.post('/editprofile/:id',(req, res)=>{
     }
 	
 });
+
+
+
+router.get('/userlist',(req,res)=>{
+
+    if(req.session.sid != null){
+            var id=req.session.sid;
+            adminModel.getAll(function(results){
+               res.render('admin/userlist',{users: results});    
+            });
+        }
+        else{
+            res.redirect('/login');
+        }
+    });
 
 
 
