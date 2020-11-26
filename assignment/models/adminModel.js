@@ -34,6 +34,12 @@ module.exports= {
 		});
 	},
 
+	update:function(customer,callback){
+		var sql= "update user set username='"+customer.username+"',password='"+customer.password+"',email='"+customer.email+"',address='"+customer.address+"',gender='"+customer.gender+"'  where id='"+customer.id+"'";
+		db.execute(sql,function(results){
+				callback(true);
+		});
 
+	},
 
 }

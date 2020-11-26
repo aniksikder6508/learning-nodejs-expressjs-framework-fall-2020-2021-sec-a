@@ -11,13 +11,13 @@
 <form method="post">
 
 <legend>Personal Information</legend>
-<b>Username : </b><input type ="text" name="username" value="<%= username %>" disabled><br/><br/>
-<b>Password : </b><input type ="text" name="password" value="<%= password %>" disabled><br/><br/>
-<b>Email : </b><input type ="text" name="email" value="<%= email %>" disabled><br/><br/>
-<b>Address : </b><input type ="text" name="address" value="<%= address %>" disabled><br/><br/>
+<b>Username : </b><input type ="text" name="username" value="<%= username %>" ><br/><br/>
+<b>Password : </b><input type ="text" name="password" value="<%= password %>" ><br/><br/>
+<b>Email : </b><input type ="text" name="email" value="<%= email %>" ><br/><br/>
+<b>Address : </b><input type ="text" name="address" value="<%= address %>" ><br/><br/>
 
 <b>Gender :</b>
-        <select name="gender" disabled>
+        <select name="gender">
             <% var options = ['Male','Female']; %>
           <% for(var i = 0; i< options.length; i++) { %>
                 <% if(gender === options[i]){ %>
@@ -28,7 +28,7 @@
                  <% } %>
         </select><br/><br/>       
 
-        <a href="/admin/editprofile/<%= id %>"><h3>Edit</h3></a>
+        <input type="submit" value="submit">
 
 
 </form>
