@@ -16,6 +16,7 @@ router.post('/',(req,res)=>{
         username:req.body.username,
         password:req.body.password
     };
+    
     adminModel.validate(user, function(results){
 		if(results.type==='Admin'){
             //res.cookie('uname', req.body.username);   
@@ -24,13 +25,7 @@ router.post('/',(req,res)=>{
 			res.redirect('/admin');
         }
 
-       else if(results.type==='Customer'){
-            //res.cookie('uname', req.body.username);   
-            req.session.sid= results.id;
-            console.log(req.session.sid);
-			res.redirect('/customer');
-        }
-
+      
         else{
             console.log('error answer');
             req.session.errors="Invalid ID or Password.";
