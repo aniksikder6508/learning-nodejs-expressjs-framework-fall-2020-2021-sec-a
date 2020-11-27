@@ -1,0 +1,35 @@
+<div>
+
+    <h3 align='center'>BookList</h3>
+
+    <a href="/customer"><h3>Home</h3></a>
+    <a href="/logout"><h3>Logout</h3></a>
+    
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Bookname</th>
+        <th scope="col">Author</th>
+        <th scope="col">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+
+
+      <% 
+          users.forEach( function(std){ %>
+          <tr>
+              <td><%= std.id %></td>
+              <td><%= std.bookname %></td>
+              <td><%= std.author %></td>
+              <td><%= std.price %></td>
+        
+              
+          </tr>
+
+      <%
+          }); 
+      %>
+    </tbody>
+  </table>

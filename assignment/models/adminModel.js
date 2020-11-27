@@ -105,5 +105,12 @@ module.exports= {
 
 	},
 
+	getAllOrderList: function(callback){
+		var sql ="select * from orderlist";
+		db.getResults(sql, function(results){
+			callback(results);
+		});
+	},
+
 
 }

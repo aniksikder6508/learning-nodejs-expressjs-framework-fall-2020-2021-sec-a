@@ -1,5 +1,7 @@
 const express = require('express');
 const adminModel=require.main.require('./models/adminModel');
+const customerModel=require.main.require('./models/customerModel');
+
 const router = express.Router();
 
 
@@ -98,6 +100,57 @@ router.get('/editprofile/:id',(req,res)=>{
       
   });
   
+
+  router.get('/booklist',(req,res)=>{
+
+    if(req.session.sid != null){
+        var id=req.session.sid;
+        adminModel.getAllBook(function(results){
+           res.render('customer/booklist',{users: results});    
+        });
+    }
+    else{
+        res.redirect('/login');
+    }
+});
+
+
+router.get('/orderbook',(req,res)=>{
+
+    if(req.session.sid != null){
+       res.render('customer/orderbook');
+    }
+    else{
+        res.redirect('/login');
+    }
+});
+
+
+router.post('/orderbook',(req,res)=>{
+
+        if(req.session.sid != null){
+            
+            var user={
+                bookname:req.body.bookname,
+                author:req.body.author,
+                username:req.body.username,
+                address:req.body.address
+            }
+        
+            customerModel.orderList(user, function(results){
+                        
+                res.redirect('/customer');
+        });   
+       
+    }
+        else{
+            res.redirect('/login');
+        }
+    });
+
+
+
+
 
 
 module.exports =router;

@@ -296,6 +296,19 @@ router.get('/userlist',(req,res)=>{
     });
 
 
+    router.get('/orderlist',(req,res)=>{
+
+        if(req.session.sid != null){
+            var id=req.session.sid;
+            adminModel.getAllOrderList(function(results){
+               res.render('admin/orderlist',{users: results});    
+            });
+        }
+        else{
+            res.redirect('/login');
+        }
+    });
+
 
 
       
