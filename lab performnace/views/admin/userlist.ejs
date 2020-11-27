@@ -1,0 +1,49 @@
+<div>
+
+    <h3 align='center'>UserList</h3>
+
+    <a href="/admin"><h3>Home</h3></a>
+    <a href="/logout"><h3>Logout</h3></a>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">EmployeeName</th>
+        <th scope="col">Company</th>
+        <th scope="col">ContactNo</th>
+        <th scope="col">UserName/th>
+        <th scope="col">Password</th>
+        <th scope="col">Type</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+
+
+      <% 
+          users.forEach( function(std){ %>
+          <tr>
+              <td><%= std.id %></td>
+              <td><%= std.employername %></td>
+              <td><%= std.company %></td>
+              <td><%= std.contactno %></td>
+              <td><%= std.username %></td>
+              <td><%= std.password %></td>
+              <td><%= std.type %></td>
+              <td>
+                  <a href="/admin/editprofile/<%= std.id %>">Edit</a>
+      </td>
+      <td>
+        <a href="/admin/deleteuser/<%= std.id %>">Delete</a>
+              </td>
+
+              
+          </tr>
+
+      <%
+          }); 
+      %>
+    </tbody>
+  </table>

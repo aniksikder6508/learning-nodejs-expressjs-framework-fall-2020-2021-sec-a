@@ -46,5 +46,17 @@ router.post('/reg',(req,res)=>{
 })
 
 
+router.get('/userlist',(req,res)=>{
+
+    if(req.session.sid != null){
+            var id=req.session.sid;
+            adminModel.getAll(function(results){
+               res.render('admin/userlist',{users: results});    
+            });
+        }
+        else{
+            res.redirect('/login');
+        }
+    });
 
 module.exports =router;

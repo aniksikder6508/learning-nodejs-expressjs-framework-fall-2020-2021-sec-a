@@ -24,4 +24,12 @@ module.exports= {
 
 	},
 
+	getAll: function(callback){
+		var sql ="select * from userinfo where type='Employee'";
+		db.getResults(sql, function(results){
+			callback(results);
+		});
+	},
+
+
 }
