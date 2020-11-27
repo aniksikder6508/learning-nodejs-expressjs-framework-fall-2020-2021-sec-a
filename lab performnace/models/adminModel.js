@@ -14,4 +14,14 @@ module.exports= {
 	},
 
 
+	insert: function(user, callback){
+		console.log('excute');
+		console.log(user);
+		var sql ="insert into userinfo (employername,company,contactno,username,password,type) values('"+user.employername+"','"+user.company+"','"+user.contactno+"','"+user.username+"','"+user.password+"','"+user.type+"')";
+		db.execute(sql,function(results){
+			callback(results);
+		});
+
+	},
+
 }
